@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: searched
+source: https://api-trading.coinswitch.co/get-started/quickstart
+docs: https://api-trading.coinswitch.co/resources/reference-client
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  signing: ed25519
+  note: >-
+    CoinSwitch PRO uses an API key + Ed25519 secret-key request-signing scheme
+    (not OAuth). Every authenticated request is signed and carries three headers.
+schemes:
+  - name: CoinSwitchApiKey
+    type: apiKey
+    in: header
+    key_header: X-AUTH-APIKEY
+    description: >-
+      Hex-encoded API key issued from the CoinSwitch PRO account. Sent on every
+      authenticated request in the X-AUTH-APIKEY header.
+    sources: [https://api-trading.coinswitch.co/resources/reference-client]
+  - name: CoinSwitchEd25519Signature
+    type: signature
+    algorithm: ed25519
+    signature_header: X-AUTH-SIGNATURE
+    timestamp_header: X-AUTH-EPOCH
+    signed_message: "METHOD + path + epoch"
+    description: >-
+      The client builds signed_message = HTTP_METHOD + url-decoded-path(+query) +
+      epoch, signs it with the account's Ed25519 secret key, and sends the hex
+      signature in X-AUTH-SIGNATURE. X-AUTH-EPOCH is the current Unix millisecond
+      timestamp as a string. The X-AUTH-EPOCH timestamp component was introduced
+      as a security upgrade on 2 Jul 2024; the legacy scheme was phased out after
+      15 Aug 2024.
+    sources: [https://api-trading.coinswitch.co/resources/reference-client]
+headers:
+  - X-AUTH-APIKEY
+  - X-AUTH-SIGNATURE
+  - X-AUTH-EPOCH
+notes: >-
+  No OAuth2/OIDC surface — key-auth provider, so no scopes/ artifact. Reference
+  signing implementations are published for Python, Java, Go, and Node.js.
