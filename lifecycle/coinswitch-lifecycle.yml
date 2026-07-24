@@ -1,0 +1,22 @@
+generated: '2026-07-18'
+method: searched
+source: https://api-trading.coinswitch.co/resources/changelog
+versioning:
+  scheme: uri-path
+  current: v2
+  base_path: /trade/api/v2
+  docs: https://api-trading.coinswitch.co/get-started/introduction
+deprecation:
+  policy: >-
+    CoinSwitch phases out legacy behaviour with announced cut-off dates in the
+    changelog rather than a formal RFC 8594 Sunset-header policy. Examples: the
+    legacy signing scheme was retired after 15 Aug 2024 (superseded by the
+    X-AUTH-EPOCH scheme); the legacy WebSocket handshake path was removed
+    1 Apr 2024.
+  docs: https://api-trading.coinswitch.co/resources/changelog
+  sunset_header: false
+status_page: https://status.coinswitch.co
+sla:
+  url: null
+  uptime_target: null
+deprecated_operations: []

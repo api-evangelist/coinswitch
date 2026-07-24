@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source: https://api-trading.coinswitch.co/resources/errors-and-rate-limits
+format: custom-json
+envelopes:
+  spot_futures_v2:
+    shape: '{ "message": "<error text>" }'
+    note: Flat object; the message field names the offending field on validation errors.
+  hft:
+    shape: '{ "retCode": <int>, "retMsg": "<error text>", "result": {}, "retExtInfo": {}, "time": <timestamp> }'
+    note: Standard envelope for the HFT surface (Bybit-style retCode/retMsg).
+problems:
+  - status: 400
+    title: Malformed request
+    action: Fix the request and retry.
+    examples:
+      - "Amount is more than available balance"
+  - status: 401
+    title: Authentication failed
+    action: Verify the Ed25519 signing flow and credentials.
+    examples:
+      - "Invalid Access"
+  - status: 422
+    title: Validation failed
+    action: The message names the offending field; correct it and retry.
+    examples:
+      - "Input <field> is missing"
+      - "The value you provided for the field is not valid"
+  - status: 429
+    title: Rate limit exceeded
+    action: Back off (exponential) and retry after the window.
+  - status: 500
+    title: Server error
+    action: >-
+      Do NOT blindly retry writes. Always reconcile by querying with your
+      client-supplied ID before retrying, to avoid duplicate orders.
+notes: >-
+  CoinSwitch is a trading venue, not a card acquirer — API-level errors above are
+  the error registry; there is no card decline-code surface.

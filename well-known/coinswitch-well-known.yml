@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: probed
+source: live probes of coinswitch.co + api-trading.coinswitch.co
+hosts:
+  - host: https://coinswitch.co
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /security.txt
+        status: 404
+      - path: /llms.txt
+        status: 200
+        file: ../llms/coinswitch-llms.txt
+        note: Marketing/SEO llms.txt (coin price pages), not a developer index.
+  - host: https://api-trading.coinswitch.co
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /llms.txt
+        status: 404
+result: No /.well-known discovery documents published on either host.

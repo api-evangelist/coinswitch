@@ -1,0 +1,42 @@
+generated: '2026-07-18'
+method: searched
+source: https://api-trading.coinswitch.co/resources/reference-client
+note: >-
+  CoinSwitch PRO does NOT publish official client-library packages. The docs
+  ship copy-in REFERENCE implementations (not installable SDKs) for Python 3.9+,
+  Java 11+, Go 1.21+, and Node.js 18+ that show the Ed25519 signing flow; they
+  depend only on standard crypto/HTTP libraries. No official npm/PyPI/Maven
+  package exists, so no SDKs pointer is emitted.
+reference_clients:
+  - language: python
+    runtime: '3.9+'
+    dependencies: [cryptography, requests, python-socketio, websocket-client]
+    official: true
+    installable: false
+  - language: java
+    runtime: '11+'
+    dependencies: ['org.bouncycastle:bcprov-jdk18on:1.78', 'com.fasterxml.jackson.core:jackson-databind:2.17.0']
+    official: true
+    installable: false
+  - language: go
+    runtime: '1.21+'
+    dependencies: [standard library]
+    official: true
+    installable: false
+  - language: nodejs
+    runtime: '18+'
+    dependencies: [native crypto module]
+    official: true
+    installable: false
+packages:
+  - language: javascript
+    registry: npm
+    name: coinswitch
+    url: https://www.npmjs.com/package/coinswitch
+    install: npm install coinswitch
+    version: 1.0.1
+    official: false
+    note: >-
+      Third-party community client by Rocco Musolino (roccomuso) for the older
+      coinswitch.co aggregator API — NOT the first-party CoinSwitch PRO trading
+      SDK. Listed for completeness only.

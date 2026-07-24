@@ -1,9 +1,33 @@
 aid: coinswitch
 name: CoinSwitch
-description: CoinSwitch is a company surfaced as a portfolio company of a16z, paradigm, ribbit-capital
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: >-
+  CoinSwitch is one of India's largest retail crypto investing platforms, based
+  in Bengaluru and backed by a16z, Paradigm, and Ribbit Capital. Alongside its
+  consumer buy/sell app it operates CoinSwitch PRO, a professional trading venue
+  that exposes a public REST and WebSocket API for programmatic trading. The
+  CoinSwitch PRO API (base https://coinswitch.co/trade/api/v2) covers Spot
+  trading on INR and USDT pairs, USDT-margined Perpetual Futures with up to 100x
+  leverage, low-latency High-Frequency Trading (HFT) endpoints, and Options
+  (private beta). Developers can place, cancel, and track orders, read
+  portfolios and trading fees, and subscribe to real-time order, balance, and
+  candlestick streams over Socket.IO. Requests authenticate with an API key and
+  an Ed25519 request signature (X-AUTH-APIKEY / X-AUTH-SIGNATURE / X-AUTH-EPOCH),
+  with reference signing implementations published for Python, Java, Go, and
+  Node.js.
 url: https://raw.githubusercontent.com/api-evangelist/coinswitch/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://api-trading.coinswitch.co/img/social-card.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -14,10 +38,47 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Cryptocurrency
+- Crypto Exchange
+- Trading
+- Fintech
+- Futures
+- Spot Trading
+- WebSocket
+- India
+apis:
+- name: CoinSwitch PRO Trading API
+  description: >-
+    Professional REST + WebSocket trading API for Spot (INR/USDT), USDT-margined
+    Perpetual Futures, HFT, and Options on the CoinSwitch PRO venue. Ed25519
+    request signing; v2 base path /trade/api/v2.
+  humanURL: https://api-trading.coinswitch.co/
+  baseURL: https://coinswitch.co/trade/api/v2
+  tags:
+  - Trading
+  - Spot
+  - Futures
+  - HFT
+  properties:
+  - type: Documentation
+    url: https://api-trading.coinswitch.co/get-started/introduction
+  - type: GettingStarted
+    url: https://api-trading.coinswitch.co/get-started/quickstart
+  - type: APIReference
+    url: https://api-trading.coinswitch.co/resources/reference-client
+  - type: Authentication
+    url: authentication/coinswitch-authentication.yml
+  - type: RateLimits
+    url: rate-limits/coinswitch-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/coinswitch-problem-types.yml
+  - type: Conventions
+    url: conventions/coinswitch-conventions.yml
+  - type: Webhooks
+    url: asyncapi/coinswitch-streams-webhooks.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +87,52 @@ maintainers:
 common:
 - type: Website
   url: https://coinswitch.co
+- type: DeveloperPortal
+  url: https://api-trading.coinswitch.co/
+- type: Documentation
+  url: https://api-trading.coinswitch.co/get-started/introduction
+- type: APIReference
+  url: https://api-trading.coinswitch.co/resources/reference-client
+- type: GettingStarted
+  url: https://api-trading.coinswitch.co/get-started/quickstart
+- type: Blog
+  url: https://coinswitch.co/blog
+- type: Support
+  url: https://coinswitch.co/faqs
+- type: StatusPage
+  url: https://status.coinswitch.co
+- type: TermsOfService
+  url: https://coinswitch.co/terms-of-use
+- type: PrivacyPolicy
+  url: https://coinswitch.co/privacy-policy
+- type: ChangeLog
+  url: https://api-trading.coinswitch.co/resources/changelog
+- type: ChangeLog
+  url: changelog/coinswitch-changelog.yml
+- type: Deprecation
+  url: lifecycle/coinswitch-lifecycle.yml
+- type: Lifecycle
+  url: lifecycle/coinswitch-lifecycle.yml
+- type: Authentication
+  url: authentication/coinswitch-authentication.yml
+- type: RateLimits
+  url: rate-limits/coinswitch-rate-limits.yml
+- type: ErrorCatalog
+  url: errors/coinswitch-problem-types.yml
+- type: Conventions
+  url: conventions/coinswitch-conventions.yml
+- type: Webhooks
+  url: asyncapi/coinswitch-streams-webhooks.yml
+- type: MCPServer
+  url: mcp/coinswitch-mcp.yml
+- type: LLMsTxt
+  url: llms/coinswitch-llms.txt
+- type: Packages
+  url: packages/coinswitch-packages.yml
+- type: DomainSecurity
+  url: security/coinswitch-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

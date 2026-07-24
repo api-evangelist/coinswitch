@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://api-trading.coinswitch.co/resources/changelog
+spec_type: Webhooks
+transport: Socket.IO (WebSocket)
+note: >-
+  CoinSwitch PRO exposes a real-time event surface over Socket.IO. No published
+  AsyncAPI document exists, so this captures the documented streaming/private
+  user-stream catalog as a Webhooks-equivalent event surface (never fabricated).
+channels:
+  - name: order_updates
+    type: private user stream
+    description: >-
+      Pushes order status changes (replaces polling). Added 2024-05-24; Python
+      samples updated to Socket.IO v4 conventions 2025-08-28.
+  - name: balance_updates
+    type: private user stream
+    description: >-
+      Delivers wallet snapshots when balances change. Added 2024-12-13.
+  - name: candlestick
+    type: market data stream
+    description: >-
+      Real-time 1-minute candles over WebSocket. Added 2023-11-10.
+market_data_streams:
+  - order_book
+  - trades
+  - ticker

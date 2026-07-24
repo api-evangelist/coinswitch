@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: https://api-trading.coinswitch.co/get-started/introduction
+note: >-
+  No official hosted/remote MCP server was found for CoinSwitch PRO. This is a
+  DERIVED candidate tool list mapped from the documented REST v2 operations, so a
+  future MCP server has a grounded surface. Not published by CoinSwitch.
+server:
+  name: coinswitch-pro
+  transport: http
+tools:
+  - name: create_order
+    description: Place a spot or futures order (side, symbol, type, price, quantity, exchange).
+    source_operation: POST /trade/api/v2/order
+  - name: cancel_order
+    description: Cancel an open order.
+    source_operation: DELETE /trade/api/v2/order
+  - name: get_order
+    description: Fetch the status of a single order by id.
+    source_operation: GET /trade/api/v2/order
+  - name: list_coins
+    description: List supported coins / trading pairs.
+    source_operation: GET /trade/api/v2/coins
+  - name: get_portfolio
+    description: Retrieve account portfolio / balances.
+    source_operation: GET /trade/api/v2/portfolio
+  - name: get_trading_fee
+    description: Return account-specific exchange trading fees (with discount).
+    source_operation: GET /trade/api/v2/tradingFee
+  - name: get_trade_info
+    description: Retrieve trade metadata.
+    source_operation: GET /trade/api/v2/tradeInfo
+  - name: get_tds
+    description: Retrieve TDS (tax deducted at source) details.
+    source_operation: GET /trade/api/v2/tds
+  - name: get_server_time
+    description: Return server time (for signature epoch alignment).
+    source_operation: GET /trade/api/v2/time

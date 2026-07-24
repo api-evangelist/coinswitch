@@ -1,0 +1,78 @@
+generated: '2026-07-18'
+method: searched
+source: https://api-trading.coinswitch.co/resources/errors-and-rate-limits
+signal: HTTP 429 on exceed; back off with exponential retry.
+rate_limits:
+  - surface: spot
+    endpoint: Create Order
+    limit_count: 100
+    window_seconds: 10
+  - surface: spot
+    endpoint: List Orders
+    limit_count: 10000
+    window_seconds: 10
+  - surface: spot
+    endpoint: Portfolio
+    limit_count: 5000
+    window_seconds: 10
+  - surface: spot
+    endpoint: TDS
+    limit_count: 25
+    window_seconds: 10
+  - surface: futures
+    endpoint: Place Order
+    limit_count: 20
+    window_seconds: 60
+  - surface: futures
+    endpoint: Cancel Order
+    limit_count: 10
+    window_seconds: 60
+  - surface: futures
+    endpoint: Cancel All
+    limit_count: 10
+    window_seconds: 60
+  - surface: futures
+    endpoint: Get Order Status
+    limit_count: 20
+    window_seconds: 60
+  - surface: futures
+    endpoint: Open/Closed Orders
+    limit_count: 20
+    window_seconds: 60
+  - surface: futures
+    endpoint: Get Positions
+    limit_count: 20
+    window_seconds: 60
+  - surface: futures
+    endpoint: Update Leverage
+    limit_count: 10
+    window_seconds: 60
+  - surface: futures
+    endpoint: Get Leverage
+    limit_count: 20
+    window_seconds: 60
+  - surface: futures
+    endpoint: Add Margin
+    limit_count: 10
+    window_seconds: 60
+  - surface: futures
+    endpoint: Wallet Balance
+    limit_count: 20
+    window_seconds: 60
+  - surface: futures
+    endpoint: Transactions
+    limit_count: 20
+    window_seconds: 60
+  - surface: futures
+    endpoint: Market Data (Instrument Info, Order Book, Ticker, All Pairs Ticker, Trades)
+    limit_count: 100
+    window_seconds: 60
+  - surface: futures
+    endpoint: KLines
+    limit_count: 30
+    window_seconds: 60
+  - surface: hft
+    endpoint: all
+    limit_count: null
+    window_seconds: null
+    note: Apply conservatively with exponential backoff on 429s; no published fixed number.

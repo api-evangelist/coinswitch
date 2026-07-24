@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: searched
+source: https://api-trading.coinswitch.co/resources/errors-and-rate-limits
+authentication:
+  style: api-key + Ed25519 request signing
+  headers: [X-AUTH-APIKEY, X-AUTH-SIGNATURE, X-AUTH-EPOCH]
+  ref: authentication/coinswitch-authentication.yml
+base_url: https://coinswitch.co/trade/api/v2
+versioning:
+  style: uri-path
+  current: v2
+  ref: lifecycle/coinswitch-lifecycle.yml
+request_signing:
+  signed_message: "METHOD + path + epoch"
+  timestamp: X-AUTH-EPOCH (Unix milliseconds, string)
+  algorithm: ed25519
+retry_and_reconciliation:
+  note: >-
+    On 5xx, the docs direct clients NOT to blindly retry order writes but to
+    reconcile first by querying with the client-supplied order ID before
+    retrying — a dedup pattern that guards against duplicate orders. This is not
+    a formal Idempotency-Key header, so no Idempotency contract is asserted.
+error_envelope:
+  spot_futures_v2: '{ "message": "<error text>" }'
+  hft: '{ "retCode": <int>, "retMsg": "<error text>", "result": {}, "retExtInfo": {}, "time": <ts> }'
+  ref: errors/coinswitch-problem-types.yml
+rate_limit_signaling:
+  mechanism: HTTP 429 on exceed; exponential backoff expected.
+  ref: rate-limits/coinswitch-rate-limits.yml
+pagination:
+  note: >-
+    Order-history endpoints accept a count parameter (Closed Orders default count
+    raised to 500 on 2023-11-10). No cursor/offset pagination is documented.
+event_streaming:
+  transport: Socket.IO (WebSocket)
+  streams: [Order Updates, Balance Updates, Candlestick (1-minute)]
+  ref: asyncapi/coinswitch-streams-webhooks.yml

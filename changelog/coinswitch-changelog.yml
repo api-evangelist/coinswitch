@@ -1,0 +1,48 @@
+generated: '2026-07-18'
+method: searched
+source: https://api-trading.coinswitch.co/resources/changelog
+scheme: dated
+current_version: v2
+entries:
+  - date: '2025-08-28'
+    highlights: Updated Python samples for Balance Updates and Order Updates private user streams to comply with Socket.IO v4 client conventions.
+    breaking: false
+  - date: '2025-07-24'
+    highlights: Options trading via API is now live for a select group of users (access by emailing api@coinswitch.co).
+    breaking: false
+  - date: '2024-12-13'
+    highlights: Introduced the Balance Updates private user stream — a Socket.IO subscription delivering wallet snapshots when balances change.
+    breaking: false
+  - date: '2024-07-25'
+    highlights: Trading Fee response now includes a discount field and post-discount fee calculation.
+    breaking: false
+  - date: '2024-07-23'
+    highlights: 'New endpoint: GET /trade/api/v2/tradingFee returns account-specific exchange fees.'
+    breaking: false
+  - date: '2024-07-02'
+    highlights: 'Security upgrade — X-AUTH-EPOCH header adds Unix millisecond timestamps to the signature. New endpoints: GET /trade/api/v2/tradeInfo, GET /trade/api/v2/tds, GET /trade/api/v2/time. Legacy signing scheme phased out after 15 Aug 2024.'
+    breaking: true
+  - date: '2024-05-24'
+    highlights: Order Updates private user stream added — Socket.IO subscription replacing polling for order status changes.
+    breaking: false
+  - date: '2024-02-09'
+    highlights: New exchange identifier c2c2 for additional USDT pairs. WebSocket handshake path changed; legacy path removed 1 Apr 2024.
+    breaking: true
+  - date: '2024-01-16'
+    highlights: Java signature-generation sample improved for precision handling.
+    breaking: false
+  - date: '2023-12-26'
+    highlights: Request limits updated for Create Order, Portfolio, and List Orders endpoints.
+    breaking: false
+  - date: '2023-11-10'
+    highlights: Candlestick WebSocket added for real-time 1-minute candles. Closed Orders default count raised to 500.
+    breaking: false
+  - date: '2023-11-06'
+    highlights: Removed blocked balance fields from Portfolio response.
+    breaking: false
+  - date: '2023-09-25'
+    highlights: 'Two intermediate order statuses introduced: CANCELLATION_RAISED and EXPIRATION_RAISED. New endpoints: GET /trade/api/v2/order, GET /trade/api/v2/coins.'
+    breaking: false
+  - date: '2023-08-04'
+    highlights: v2 API launched with enhanced security and standardized response formats across ten new endpoints.
+    breaking: true
